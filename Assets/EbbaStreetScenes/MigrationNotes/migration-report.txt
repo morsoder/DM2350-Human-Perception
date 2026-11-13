@@ -1,0 +1,55 @@
+Scenes=49 Dependencies=465 RemovedMissingScripts=24189 DisabledCameras=105 ConvertedMaterials=536
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/Downloaded/Freebie_01/Models/Materials/Ceiling_mat.mat | Hidden/InternalErrorShader
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/Downloaded/Freebie_01/Models/Materials/Roof_mat.mat | Hidden/InternalErrorShader
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/Downloaded/Freebie_01/Models/Materials/WoodFloor_mat.mat | Hidden/InternalErrorShader
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/bark01.mat | Nature/Tree Creator Bark
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/bark02.mat | Nature/Tree Creator Bark
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/branch01.mat | Nature/Tree Creator Leaves
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/branch02.mat | Nature/Tree Creator Leaves
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/bush01.mat | Nature/Tree Creator Leaves
+REVIEW_SHADER: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/bush02.mat | Nature/Tree Creator Leaves
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/GlassRefraction/Materials/GlassRefractive.mat | FX/Glass/Stained BumpDistort
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/LightFlares/Materials/Flare50mm.mat | FX/Flare
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/Projectors/Materials/GridProjector.mat | Projector/Light
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/Projectors/Materials/LightProjector.mat | Projector/Light
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/Projectors/Materials/ShadowProjector.mat | Projector/Multiply
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/TessellationShaders/Materials/TesselatedBumpSpecularDisplacement.mat | Tessellation/Bumped Specular (displacement)
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/TessellationShaders/Materials/TesselatedBumpSpecularSmooth.mat | Tessellation/Bumped Specular (smooth)
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/ToonShading/Materials/ToonBasic.mat | Toon/Basic
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/ToonShading/Materials/ToonBasicOutline.mat | Toon/Basic Outline
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/ToonShading/Materials/ToonLit.mat | Toon/Lit
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Effects/ToonShading/Materials/ToonLitOutline.mat | Toon/Lit Outline
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleAfterburner.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleDuststorm.mat | Particles/Priority Additive (Soft)
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleFireball.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleFirecloud.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleFirework.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleFlameLicks.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleFlames.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleGlow.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSmokeBlack.mat | Mobile/Particles/Multiply
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSmokeMobile.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSmokeWhite.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSpark.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSplashes.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSpray.mat | Legacy Shaders/Particles/Alpha Blended
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSteam.mat | Legacy Shaders/Particles/Alpha Blended
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleSteamMobile.mat | Mobile/Particles/Alpha Blended
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleWaterSpray.mat | Legacy Shaders/Particles/Alpha Blended
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/ParticleBurnout.mat | Legacy Shaders/Particles/Alpha Blended
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/ParticleSmokeWhite.mat | Legacy Shaders/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightGlows.mat | Mobile/Particles/Additive
+REVIEW_SHADER: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/TrailSkid.mat | Legacy Shaders/Particles/Multiply
+
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/bark02.mat | Nature/Tree Creator Bark -> Universal Render Pipeline/Lit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/branch01.mat | Nature/Tree Creator Leaves -> Universal Render Pipeline/Lit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Prefabs/UrbanEyes/ParkModule/NatureStarterKit2/Materials/branch02.mat | Nature/Tree Creator Leaves -> Universal Render Pipeline/Lit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleDuststorm.mat | Particles/Priority Additive (Soft) -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/ParticleSmokeWhite.mat | Legacy Shaders/Particles/Additive -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightGlows.mat | Mobile/Particles/Additive -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleDuststorm.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/ParticleSmokeWhite.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightGlows.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/ParticleSystems/Materials/ParticleDuststorm.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/ParticleSmokeWhite.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit
+APPROXIMATE_URP_CONVERSION: Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightGlows.mat | Universal Render Pipeline/Particles/Unlit -> Universal Render Pipeline/Particles/Unlit

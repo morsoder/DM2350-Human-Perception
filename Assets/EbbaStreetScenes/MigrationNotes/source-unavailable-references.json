@@ -1,0 +1,92 @@
+{
+  "sceneCount": 49,
+  "codeFiles": [],
+  "collisions": [],
+  "binary": [
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/New Terrain 5.asset"
+  ],
+  "unresolved": [
+    {
+      "guid": "45b3f2a43939d2736b0f39f5ed7a9862",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/Capsule.prefab"
+      ]
+    },
+    {
+      "guid": "c5f39baed598c461a9b34a1b5d88d513",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/Capsule.prefab"
+      ]
+    },
+    {
+      "guid": "da242ed8934fb4c44a5521e9c39877a1",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/CityPermutations/HighHeight_LargeWidth.prefab",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/CityPermutations/HighHeight_LargeWidth.prefab",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/CityPermutations/HighHeight_LargeWidth.prefab",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Prefabs/UrbanEyes/CityPermutations/HighHeight_LargeWidth.prefab"
+      ]
+    },
+    {
+      "guid": "4d293c8e162f3874b982baadd71153d2",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity"
+      ]
+    },
+    {
+      "guid": "4f35fa249b5008c44ac2998be6f82d4d",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Basscen.unity"
+      ]
+    },
+    {
+      "guid": "070128dbb967d4d47bd2c0cd00d96fe6",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Large.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Large.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Medium.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Medium.unity"
+      ]
+    },
+    {
+      "guid": "bd541fb6f3a851c46a31c779c5721cf3",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Large.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Medium.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/High_Small.unity",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/Low_Large.unity"
+      ]
+    },
+    {
+      "guid": "0ef85f389ce0f4e4591061de0c2b8ef6",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Scenes/Gamla/scene 7 - m”rkt.unity"
+      ]
+    },
+    {
+      "guid": "d42f3408b3c63734aa9f43fbbf3c9854",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarBodyGrey.mat",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightCoversGrey.mat"
+      ]
+    },
+    {
+      "guid": "a0f37ed6f8f1775468663e1493654ad0",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarLightCoversGrey.mat"
+      ]
+    },
+    {
+      "guid": "1e4b8d3908fc7754db11bccfed9a0e44",
+      "files": [
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-25\\files-mentioned-by-the-user-codex\\outputs\\EbbaSceneMigration/Assets/EbbaStreetScenes/Standard Assets/Vehicles/Car/Materials/SkyCarWheelGrey.mat"
+      ]
+    }
+  ]
+}
