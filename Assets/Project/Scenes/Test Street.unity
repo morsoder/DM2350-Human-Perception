@@ -329376,6 +329376,8 @@ GameObject:
   - component: {fileID: 1306507079}
   - component: {fileID: 1306507078}
   - component: {fileID: 1306507081}
+  - component: {fileID: 1306507083}
+  - component: {fileID: 1306507082}
   m_Layer: 0
   m_Name: Street Night Studio
   m_TagString: Untagged
@@ -329794,6 +329796,46 @@ MonoBehaviour:
     enabledColor: {r: 0.7, g: 0.7, b: 0.7, a: 0.7}
   reflectionProbes:
   - {fileID: 1439845714}
+--- !u!114 &1306507082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306507077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac2991a91c4ed6349a71806e61fa4593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DM2350.Recording.RouteRecorderInput
+  keyboardBinding: <Keyboard>/g
+  gamepadBinding: <Gamepad>/buttonWest
+  enableQuestLeftX: 1
+--- !u!114 &1306507083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306507077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2b7b830e7ee7f4b851178a0ba90ba2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DM2350.Recording.RouteRecorder
+  participantId: P001
+  groupId: G1
+  player: {fileID: 342977379}
+  mapShader: {fileID: 4800000, guid: e0da1eb66d544d241a2cde185f2d286c, type: 3}
+  sampleInterval: 0.1
+  flushInterval: 1
+  discontinuityDistance: 5
+  outputDirectory: 
+  mapBounds:
+    m_Center: {x: 95.447556, y: 13.525007, z: 4.987915}
+    m_Extent: {x: 112.61572, y: 40, z: 112.61572}
+  mapResolution: 1536
+  showDesktopStatus: 1
 --- !u!1 &1306640598
 GameObject:
   m_ObjectHideFlags: 0
@@ -546871,7 +546913,7 @@ MonoBehaviour:
   controlMode: 1
   allowDevelopmentModeShortcuts: 1
   showDesktopHelp: 1
-  movementSpeed: 1.4
+  movementSpeed: 3
   acceleration: 5
   deceleration: 8
   gravity: -9.81
