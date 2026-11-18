@@ -2,37 +2,48 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// Installs the locomotion prototype in the Start, Start Night and Test Street scenes.
-/// Start.unity itself stays unchanged, so removing this script restores the
-/// original scene behaviour.
-/// </summary>
+/// <summary>Initializes the shared movement rig when a supported test scene loads.</summary>
 public static class StartSceneLocomotionBootstrap
 {
     private const string StartScenePath = "Assets/Project/Scenes/Start.unity";
     private const string NightScenePath = "Assets/Project/Scenes/Start Night.unity";
     private const string StreetScenePath = "Assets/Project/Scenes/Test Street.unity";
+    private const string DaylightStreetScenePath = "Assets/Project/Scenes/Test Street Daylight.unity";
+    private const string NightStreetScenePath = "Assets/Project/Scenes/Test Street Night.unity";
+    private const string UnlitStreetScenePath = "Assets/Project/Scenes/Test Street Night with no Light.unity";
+    private const string LowLightStreetScenePath = "Assets/Project/Scenes/Test Street Night with Low Light.unity";
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void Install()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void RegisterSceneLoads()
     {
-        var scenePath = SceneManager.GetActiveScene().path;
-        if (scenePath != StartScenePath && scenePath != NightScenePath && scenePath != StreetScenePath) return;
+        SceneManager.sceneLoaded -= Install;
+        SceneManager.sceneLoaded += Install;
+    }
 
-        var cameraRig = Object.FindAnyObjectByType<OVRCameraRig>(FindObjectsInactive.Include);
+    private static void Install(Scene scene, LoadSceneMode loadMode)
+    {
+        var scenePath = scene.path;
+        if (scenePath != StartScenePath && scenePath != NightScenePath && scenePath != StreetScenePath &&
+            scenePath != DaylightStreetScenePath && scenePath != NightStreetScenePath && scenePath != UnlitStreetScenePath &&
+            scenePath != LowLightStreetScenePath)
+            return;
+
+        OVRCameraRig cameraRig = null;
+        OVRManager ovrManager = null;
+        foreach (var root in scene.GetRootGameObjects())
+        {
+            if (cameraRig == null) cameraRig = root.GetComponentInChildren<OVRCameraRig>(true);
+            if (ovrManager == null) ovrManager = root.GetComponentInChildren<OVRManager>(true);
+        }
         if (cameraRig == null)
         {
-            Debug.LogError("Start scene locomotion could not find OVRCameraRig.");
+            Debug.LogError("Scene locomotion could not find OVRCameraRig in " + scenePath);
             return;
         }
 
         var player = cameraRig.gameObject;
         var characterController = player.GetComponent<CharacterController>();
-        if (characterController == null)
-        {
-            characterController = player.AddComponent<CharacterController>();
-        }
-
+        if (characterController == null) characterController = player.AddComponent<CharacterController>();
         characterController.radius = 0.25f;
         characterController.height = 1.7f;
         characterController.center = new Vector3(0f, 0.85f, 0f);
@@ -42,18 +53,10 @@ public static class StartSceneLocomotionBootstrap
         characterController.minMoveDistance = 0f;
 
         var desktopCamera = CreateDesktopCamera(player.transform);
-        var ovrManager = Object.FindAnyObjectByType<OVRManager>(FindObjectsInactive.Include);
-        // Reuse a scene-authored component so Inspector settings survive Play sessions.
         var locomotion = player.GetComponent<ExperimentLocomotion>();
         if (locomotion == null) locomotion = player.AddComponent<ExperimentLocomotion>();
-        locomotion.Initialize(
-            cameraRig,
-            ovrManager,
-            desktopCamera,
-            characterController,
-            ExperimentControlMode.DesktopGamepad);
-
-        Debug.Log("Start scene locomotion prototype installed in DesktopGamepad mode.", locomotion);
+        locomotion.Initialize(cameraRig, ovrManager, desktopCamera, characterController, ExperimentControlMode.DesktopGamepad);
+        Debug.Log("Scene locomotion initialized in DesktopGamepad mode: " + scenePath, locomotion);
     }
 
     private static Camera CreateDesktopCamera(Transform parent)
@@ -63,23 +66,14 @@ public static class StartSceneLocomotionBootstrap
         cameraObject.transform.SetParent(parent, false);
         cameraObject.transform.localPosition = new Vector3(0f, 1.65f, 0f);
         cameraObject.transform.localRotation = Quaternion.identity;
-
         var camera = cameraObject.GetComponent<Camera>();
         if (camera == null) camera = cameraObject.AddComponent<Camera>();
         camera.nearClipPlane = 0.05f;
         camera.farClipPlane = 2000f;
         camera.fieldOfView = 70f;
-
         if (cameraObject.GetComponent<UniversalAdditionalCameraData>() == null)
-        {
             cameraObject.AddComponent<UniversalAdditionalCameraData>();
-        }
-
-        if (cameraObject.GetComponent<AudioListener>() == null)
-        {
-            cameraObject.AddComponent<AudioListener>();
-        }
-
+        if (cameraObject.GetComponent<AudioListener>() == null) cameraObject.AddComponent<AudioListener>();
         return camera;
     }
 }
