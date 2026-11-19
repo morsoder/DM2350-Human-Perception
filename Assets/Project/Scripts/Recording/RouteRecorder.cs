@@ -53,6 +53,8 @@ namespace DM2350.Recording
         [Min(0.1f)] public float discontinuityDistance = 5f;
         [Tooltip("Blank uses Documents/DM2350_Results on Windows; the application data directory on other platforms.")]
         public string outputDirectory;
+        [Tooltip("When disabled, only the route PNG is exported. Samples remain in memory until recording ends.")]
+        public bool exportRawData = true;
         [Header("Map")]
         public Bounds mapBounds = new Bounds(new Vector3(100, 10, 0), new Vector3(240, 80, 240));
         [Range(512, 4096)] public int mapResolution = 1536;
@@ -67,6 +69,8 @@ namespace DM2350.Recording
         private string previousLighting, previousMode;
         private bool previousPaused;
         private bool saving;
+        private bool sessionWritesRawData;
+        public string LastImagePath { get; private set; }
         private bool previousRunInBackground;
         public bool IsRecording { get; private set; }
         public string Status { get; private set; } = "Ready - G / Xbox X / Quest left X";
@@ -105,10 +109,17 @@ namespace DM2350.Recording
                 if (player == null) throw new InvalidOperationException("Player reference is missing.");
                 var id = DateTime.UtcNow.ToString("yyyyMMdd_HHmmss_fff", CultureInfo.InvariantCulture) + "_" + Guid.NewGuid().ToString("N").Substring(0, 8);
                 LastSessionDirectory = Path.Combine(ExportRoot, SafeLabel(participantId), id);
-                Directory.CreateDirectory(LastSessionDirectory);
-                stream = new FileStream(Path.Combine(LastSessionDirectory, "trajectory.csv.partial"), FileMode.CreateNew, FileAccess.Write, FileShare.Read);
-                writer = new StreamWriter(stream, new UTF8Encoding(false), 8192, true);
-                writer.WriteLine("time_seconds,utc_time,segment,x,y,z,head_x,head_y,head_z,head_forward_x,head_forward_y,head_forward_z,lighting_condition,control_mode,paused,head_source,head_tracking_valid");
+                sessionWritesRawData = exportRawData;
+                var imageName = sessionWritesRawData ? "route.png" : SafeLabel(participantId) + "_" + SafeLabel(groupId) + "_" +
+                    SafeLabel(Path.GetFileNameWithoutExtension(gameObject.scene.path).Replace(' ', '_')) + "_" + id + ".png";
+                LastImagePath = Path.Combine(LastSessionDirectory, imageName);
+                if (sessionWritesRawData)
+                {
+                    Directory.CreateDirectory(LastSessionDirectory);
+                    stream = new FileStream(Path.Combine(LastSessionDirectory, "trajectory.csv.partial"), FileMode.CreateNew, FileAccess.Write, FileShare.Read);
+                    writer = new StreamWriter(stream, new UTF8Encoding(false), 8192, true);
+                    writer.WriteLine("time_seconds,utc_time,segment,x,y,z,head_x,head_y,head_z,head_forward_x,head_forward_y,head_forward_z,lighting_condition,control_mode,paused,head_source,head_tracking_valid");
+                }
                 started = Time.realtimeSinceStartupAsDouble;
                 nextSample = started;
                 nextFlush = started + Mathf.Max(0.1f, flushInterval);
@@ -163,7 +174,7 @@ namespace DM2350.Recording
             {
                 IsRecording = false;
                 CloseWriter();
-                Status = "Recording interrupted; partial data retained: " + e.Message;
+                Status = (sessionWritesRawData ? "Recording interrupted; partial data retained: " : "Recording interrupted before PNG export: ") + e.Message;
                 Debug.LogWarning(Status, this);
             }
         }
@@ -192,7 +203,7 @@ namespace DM2350.Recording
             }
             var point = new RoutePoint { seconds = elapsed, segment = segment, position = position };
             points.Add(point);
-            writer.WriteLine(string.Join(",", D(elapsed), DateTime.UtcNow.ToString("O"), segment.ToString(CultureInfo.InvariantCulture),
+            if (writer != null) writer.WriteLine(string.Join(",", D(elapsed), DateTime.UtcNow.ToString("O"), segment.ToString(CultureInfo.InvariantCulture),
                 F(position.x), F(position.y), F(position.z), F(hp.x), F(hp.y), F(hp.z), F(forward.x), F(forward.y), F(forward.z), lighting, mode, paused ? "1" : "0", vr ? "xr_head" : "desktop_camera", tracking));
             session.sampleCount = points.Count;
             session.durationSeconds = elapsed;
@@ -213,7 +224,7 @@ namespace DM2350.Recording
                 Flush();
                 CloseWriter();
                 var csv = Path.Combine(LastSessionDirectory, "trajectory.csv");
-                File.Move(csv + ".partial", csv);
+                if (sessionWritesRawData) File.Move(csv + ".partial", csv);
                 session.imageStatus = exportImage ? "generating" : "not_generated_interrupted_session";
                 WriteMetadata();
                 if (exportImage)
@@ -221,7 +232,8 @@ namespace DM2350.Recording
                     try
                     {
                         Status = "Saving map...";
-                        RouteMapExporter.Export(mapShader, gameObject.scene, player, mapBounds, mapResolution, points, Path.Combine(LastSessionDirectory, "route.png"));
+                        Directory.CreateDirectory(LastSessionDirectory);
+                        RouteMapExporter.Export(mapShader, gameObject.scene, player, mapBounds, mapResolution, points, LastImagePath);
                         session.imageStatus = "saved";
                         session.imageWidth = session.imageHeight = Mathf.Clamp(mapResolution, 512, 4096);
                     }
@@ -229,14 +241,15 @@ namespace DM2350.Recording
                     {
                         session.imageStatus = "failed";
                         session.imageError = imageError.Message;
-                        Debug.LogWarning("Route data saved; map export failed: " + imageError.Message, this);
+                        Debug.LogWarning((sessionWritesRawData ? "Route data saved; PNG export failed: " : "PNG export failed: ") + imageError.Message, this);
                     }
                 }
                 WriteMetadata();
-                if (!File.Exists(csv) || new FileInfo(csv).Length == 0) throw new IOException("Exported CSV could not be verified.");
-                Status = session.imageStatus == "saved" ? "Saved: " + LastSessionDirectory : "Data saved; map " + session.imageStatus + ": " + LastSessionDirectory;
+                if (sessionWritesRawData && (!File.Exists(csv) || new FileInfo(csv).Length == 0)) throw new IOException("Exported CSV could not be verified.");
+                Status = session.imageStatus == "saved" ? "Saved PNG: " + LastImagePath :
+                    (sessionWritesRawData ? "Raw data saved; PNG " : "PNG ") + session.imageStatus + ": " + LastSessionDirectory;
                 Debug.Log(Status, this);
-                return true;
+                return sessionWritesRawData || session.imageStatus == "saved";
             }
             catch (Exception e)
             {
@@ -250,8 +263,15 @@ namespace DM2350.Recording
         }
 
         private void AddEvent(string type, string value) => session.events.Add(new RouteEvent { seconds = Time.realtimeSinceStartupAsDouble - started, type = type, value = value });
-        private void Flush() { writer.Flush(); stream.Flush(true); WriteMetadata(); }
-        private void WriteMetadata() => File.WriteAllText(Path.Combine(LastSessionDirectory, "session.json"), JsonUtility.ToJson(session, true), new UTF8Encoding(false));
+        private void Flush()
+        {
+            if (!sessionWritesRawData) return;
+            writer?.Flush(); stream?.Flush(true); WriteMetadata();
+        }
+        private void WriteMetadata()
+        {
+            if (sessionWritesRawData) File.WriteAllText(Path.Combine(LastSessionDirectory, "session.json"), JsonUtility.ToJson(session, true), new UTF8Encoding(false));
+        }
         private void CloseWriter()
         {
             var oldWriter = writer; var oldStream = stream;

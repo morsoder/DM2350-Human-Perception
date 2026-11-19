@@ -329107,90 +329107,119 @@ MonoBehaviour:
   - renderer: {fileID: 1784374031}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 529327547}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1025463500}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 263524909}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 729774959}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 468989872}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 123315103}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 128601654}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1181901686}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 2034781426}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 186801431}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1803939885}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 943876992}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1679277416}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1300996262}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1627844105}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 597990164}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 956241487}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 787488202}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 364167468}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 740030124}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 998090866}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 853039143}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 57099714}
     materialIndex: 0
     enabledColor: {r: 0, g: 0, b: 0, a: 1}
+    offInNightPreset: 0
   windowEmission:
   - renderer: {fileID: 1207898477}
     materialIndex: 0
     enabledColor: {r: 1.4, g: 1.33, b: 1.2, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 1207898477}
     materialIndex: 4
     enabledColor: {r: 0.65, g: 0.61, b: 0.55, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 2011975786}
     materialIndex: 0
     enabledColor: {r: 1.4, g: 1.33, b: 1.2, a: 1}
+    offInNightPreset: 0
   - renderer: {fileID: 2011975786}
     materialIndex: 4
     enabledColor: {r: 0.65, g: 0.61, b: 0.55, a: 1}
+    offInNightPreset: 0
   reflectionProbes:
   - {fileID: 1439845714}
+  lightsOffInNightPreset: []
 --- !u!114 &1306507082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329226,11 +329255,12 @@ MonoBehaviour:
   flushInterval: 1
   discontinuityDistance: 5
   outputDirectory: 
+  exportRawData: 0
   mapBounds:
     m_Center: {x: 95.447556, y: 13.525007, z: 4.987915}
     m_Extent: {x: 112.61572, y: 40, z: 112.61572}
   mapResolution: 1536
-  showDesktopStatus: 1
+  showDesktopStatus: 0
 --- !u!1 &1306640598
 GameObject:
   m_ObjectHideFlags: 0
@@ -546050,7 +546080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExperimentLocomotion
   controlMode: 1
   allowDevelopmentModeShortcuts: 1
-  showDesktopHelp: 1
+  showDesktopHelp: 0
   movementSpeed: 3
   acceleration: 5
   deceleration: 8

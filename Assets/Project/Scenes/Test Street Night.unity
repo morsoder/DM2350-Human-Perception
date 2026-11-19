@@ -331009,18 +331009,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DM2350.Recording.RouteRecorder
   participantId: P001
-  groupId: G1
+  groupId: G3
   player: {fileID: 342977379}
   mapShader: {fileID: 4800000, guid: e0da1eb66d544d241a2cde185f2d286c, type: 3}
   sampleInterval: 0.1
   flushInterval: 1
   discontinuityDistance: 5
   outputDirectory: 
+  exportRawData: 0
   mapBounds:
     m_Center: {x: 95.447556, y: 13.525007, z: 4.987915}
     m_Extent: {x: 112.61572, y: 40, z: 112.61572}
   mapResolution: 1536
-  showDesktopStatus: 1
+  showDesktopStatus: 0
 --- !u!1 &1306640598
 GameObject:
   m_ObjectHideFlags: 0
@@ -549688,7 +549689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ExperimentLocomotion
   controlMode: 1
   allowDevelopmentModeShortcuts: 1
-  showDesktopHelp: 1
+  showDesktopHelp: 0
   movementSpeed: 3
   acceleration: 5
   deceleration: 8
