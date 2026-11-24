@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee92377a8e0c873458b71a94a80f3394, type: 3}
   m_Name: ApiLayersFeature Standalone
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: API Layers
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.apilayers
@@ -89,7 +89,16 @@ MonoBehaviour:
   required: 0
   customRuntimeLoaderName: 
   m_ApiLayers:
-    m_Collection: []
+    m_Collection:
+    - m_Json:
+        name: XR_APILAYER_METAX_operator
+        library_path: ./XrApiLayer_METAX_operator.dll
+        api_version: 1.1
+        implementation_version: 1
+        description: API layer that providing agentic interface for OpenXR
+      m_JsonFileName: XrApiLayer_METAX_operator.json
+      m_LibraryArchitecture: 1
+      m_IsEnabled: 1
 --- !u!114 &-8568634838790910671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,8 +763,18 @@ MonoBehaviour:
   - {fileID: 8736661028334727731}
   - {fileID: 3598254934845347770}
   - {fileID: 6965123649111121028}
+  - {fileID: 405302295293489476}
   - {fileID: 1170704673688743257}
+  - {fileID: 7851324591010551810}
+  - {fileID: 4248279045417674093}
+  - {fileID: -9060954586867582889}
+  - {fileID: 3316743427121401004}
+  - {fileID: -5725241757937179061}
   - {fileID: 5153017048313567732}
+  - {fileID: 5217244076596211769}
+  - {fileID: 1427506876866907620}
+  - {fileID: -2868899285413958445}
+  - {fileID: -890353743499485962}
   - {fileID: -8705318006256794946}
   - {fileID: 6481653220666705815}
   - {fileID: 7393116930172532905}
@@ -803,16 +822,6 @@ MonoBehaviour:
   - {fileID: 6854443372140345734}
   - {fileID: 8347051584439025853}
   - {fileID: 2684350569200705238}
-  - {fileID: -5725241757937179061}
-  - {fileID: 4248279045417674093}
-  - {fileID: 405302295293489476}
-  - {fileID: -9060954586867582889}
-  - {fileID: 5217244076596211769}
-  - {fileID: -2868899285413958445}
-  - {fileID: 3316743427121401004}
-  - {fileID: 7851324591010551810}
-  - {fileID: 1427506876866907620}
-  - {fileID: -890353743499485962}
   customLoaderName: 
   m_renderMode: 0
   m_latencyOptimization: 0
@@ -906,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch

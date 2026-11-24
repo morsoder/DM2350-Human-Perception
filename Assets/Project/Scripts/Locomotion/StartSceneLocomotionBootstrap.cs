@@ -13,6 +13,8 @@ public static class StartSceneLocomotionBootstrap
     private const string UnlitStreetScenePath = "Assets/Project/Scenes/Test Street Night with no Light.unity";
     private const string LowLightStreetScenePath = "Assets/Project/Scenes/Test Street Night with Low Light.unity";
 
+    private const string StartTestScenePath = "Assets/Project/Scenes/SwitchingTestScenes/StartTestScene.unity";
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void RegisterSceneLoads()
     {
@@ -25,7 +27,7 @@ public static class StartSceneLocomotionBootstrap
         var scenePath = scene.path;
         if (scenePath != StartScenePath && scenePath != NightScenePath && scenePath != StreetScenePath &&
             scenePath != DaylightStreetScenePath && scenePath != NightStreetScenePath && scenePath != UnlitStreetScenePath &&
-            scenePath != LowLightStreetScenePath)
+            scenePath != LowLightStreetScenePath && scenePath != StartTestScenePath)
             return;
 
         OVRCameraRig cameraRig = null;

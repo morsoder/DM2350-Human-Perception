@@ -6,8 +6,155 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Project/Scenes/SwitchingTestScenes/StartTestScene.unity
+    guid: f89a0697dc41bd3469463fb1538927fe
+  - enabled: 1
     path: Assets/Project/Scenes/Start.unity
     guid: 55daccc09a3b69647bbab145b54a3ab3
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/att+green-att+green.unity
+    guid: caeeca14a09974ac6990a3ca49164817
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/att+green-attributes.unity
+    guid: dbdc49ffaa3a14325a9173d6d7c30426
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/att+green-empty.unity
+    guid: 3a5462a23d8624a48b0961902603ddd4
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/att+green-green.unity
+    guid: 6d4abdef61ab14f7a88cf11fd4f83c3d
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/attributes-att+green.unity
+    guid: 75b1e260d48eb4a87a44cbdd662d2b23
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/attributes-attributes.unity
+    guid: 8774fc653acab4b289b9d06ff44c61e6
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/attributes-empty.unity
+    guid: 3a19e5819854c414a949a8b584a58a2b
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/attributes-green.unity
+    guid: 1d863f23694284b6aae7ad7e6faa54a6
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/empty-att+green.unity
+    guid: 7d77abbc1a351430f9d8a666199e457b
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/empty-attributes.unity
+    guid: 9b616094a11ca4918a5f661af8cf4748
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/empty-empty.unity
+    guid: d710e53258baa4fc484386fdd6ea12b7
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/empty-green.unity
+    guid: 4468c466aa45e4c999903e82abdc40af
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/green-att+green.unity
+    guid: c8068f9571c864fca8f98818857210c3
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/green-attributes.unity
+    guid: 80bee151a665a4e9fa516ff4855e77b3
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/green-empty.unity
+    guid: b9fc923abc9194246b8f08a4f2f56912
+  - enabled: 1
+    path: Assets/Project/Scenes/Group1/green-green.unity
+    guid: 9ec17fd29ce784b70b1bfbd4a8693e83
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/att+green-att+green.unity
+    guid: 5111370f99eb84d61955fefbf18646b5
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/att+green-attributes.unity
+    guid: e85b598aa72014dcc843a0d4fcf3d58f
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/att+green-empty.unity
+    guid: 84c4eaf46c18a4b5ea80748f157b4eac
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/att+green-green.unity
+    guid: fa89285ed762446f9acb1cbbe8bbc6ea
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/attributes-att+green.unity
+    guid: 67c0567964a844246bd988cb1b506a15
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/attributes-attributes.unity
+    guid: 2f63c5e2cb1744799b3f9d43114de061
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/attributes-empty.unity
+    guid: 7ba5c9c3f759b46109ebd2d8dad3008b
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/attributes-green.unity
+    guid: a233309bee8f54e44a306f73f648feea
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/empty-att+green.unity
+    guid: 856a2ed7f72c54d7c902ee6a493a68cf
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/empty-attributes.unity
+    guid: db5ce209ecd584c8d98f61b373ea9442
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/empty-empty.unity
+    guid: f928f2676be7e490a8d2522a974a9451
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/empty-green.unity
+    guid: 6d0fc47c82c884374a8fa40f31ba8d69
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/green-att+green.unity
+    guid: f234111a699294158b91e516c04be00b
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/green-attributes.unity
+    guid: 2b9062a72023f4543b614db556d3c694
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/green-empty.unity
+    guid: 4537dc60ed73f4b9da9fe1d8bcba55a9
+  - enabled: 1
+    path: Assets/Project/Scenes/Group2/green-green.unity
+    guid: 44ce5d903b5bc4d52aa5c879edc35743
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/att+green-att+green.unity
+    guid: d10107453ce70466695c136cefb8a777
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/att+green-attributes.unity
+    guid: 0eb325334d5874edea16dc14a2d2d664
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/att+green-empty.unity
+    guid: 00a1ec772dc33403487f250f360035a1
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/att+green-green.unity
+    guid: ad54584f3237241c9aa938d450b8e381
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/attributes-att+green.unity
+    guid: 0af90b02ab05b477fa0e7f6b41f5d941
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/attributes-attributes.unity
+    guid: d2120cfcb16d74779a41649ffad52a12
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/attributes-empty.unity
+    guid: 1e284042689744823b0a4333d43ebd72
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/attributes-green.unity
+    guid: afc8b94520442406ea3daa7665bc8197
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/empty-att+green.unity
+    guid: 9444acef2dfbf41778021b9f68102aed
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/empty-attributes.unity
+    guid: 44fed07745e574ee398214f826fc3b9b
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/empty-empty.unity
+    guid: 938b3f0e3e712421bb1034ce1facacb4
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/empty-green.unity
+    guid: 0c5975cab8ec3423e8f15972203002ed
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/green-att+green.unity
+    guid: 0ed902e06e3f04d28a1aec630616bc54
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/green-attributes.unity
+    guid: 2591329b5792644968b91a208089d7d8
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/green-empty.unity
+    guid: 398b15859c0334722b34c575a4edaf3d
+  - enabled: 1
+    path: Assets/Project/Scenes/Group3/green-green.unity
+    guid: e411461d43fb9437593c42d24488ac19
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
