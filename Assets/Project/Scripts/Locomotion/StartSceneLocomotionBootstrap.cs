@@ -13,7 +13,7 @@ public static class StartSceneLocomotionBootstrap
     private const string UnlitStreetScenePath = "Assets/Project/Scenes/Test Street Night with no Light.unity";
     private const string LowLightStreetScenePath = "Assets/Project/Scenes/Test Street Night with Low Light.unity";
 
-    private const string StartTestScenePath = "Assets/Project/Scenes/SwitchingTestScenes/StartTestScene.unity";
+    private const string StartTestScenePath = SceneBucketManager.StudyStartPath;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void RegisterSceneLoads()
@@ -57,8 +57,18 @@ public static class StartSceneLocomotionBootstrap
         var desktopCamera = CreateDesktopCamera(player.transform);
         var locomotion = player.GetComponent<ExperimentLocomotion>();
         if (locomotion == null) locomotion = player.AddComponent<ExperimentLocomotion>();
-        locomotion.Initialize(cameraRig, ovrManager, desktopCamera, characterController, ExperimentControlMode.DesktopGamepad);
-        Debug.Log("Scene locomotion initialized in DesktopGamepad mode: " + scenePath, locomotion);
+        locomotion.Initialize(cameraRig, ovrManager, desktopCamera, characterController, ExperimentControlMode.VrController);
+        if (scenePath == StartTestScenePath)
+        {
+            locomotion.enabled = false;
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                foreach (var trigger in root.GetComponentsInChildren<SceneTriggerZone>(true))
+                    trigger.gameObject.SetActive(false);
+            }
+            player.AddComponent<StudyStartMenu>().Initialize(cameraRig.centerEyeAnchor);
+        }
+        Debug.Log("Scene locomotion initialized in VrController mode: " + scenePath, locomotion);
     }
 
     private static Camera CreateDesktopCamera(Transform parent)

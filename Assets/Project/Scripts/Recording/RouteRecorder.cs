@@ -194,7 +194,7 @@ namespace DM2350.Recording
             var head = Head();
             var hp = head != null ? head.position : position;
             var forward = head != null ? head.forward : player.forward;
-            var vr = mode == ExperimentControlMode.VrController.ToString() || mode == ExperimentControlMode.VrPhysicalOffset.ToString();
+            var vr = mode == ExperimentControlMode.VrController.ToString();
             var tracking = "not_applicable";
             if (vr)
             {
@@ -220,7 +220,7 @@ namespace DM2350.Recording
                 IsRecording = false;
                 session.endedUtc = DateTime.UtcNow.ToString("O");
                 session.stopReason = reason;
-                session.status = reason == "manual" ? "completed" : "interrupted";
+                session.status = (reason == "manual" || reason == "scene_trigger") ? "completed" : "interrupted";
                 Flush();
                 CloseWriter();
                 var csv = Path.Combine(LastSessionDirectory, "trajectory.csv");
@@ -285,7 +285,7 @@ namespace DM2350.Recording
         private Transform Head()
         {
             var motor = player.GetComponent<ExperimentLocomotion>();
-            var vr = motor != null && (motor.ControlMode == ExperimentControlMode.VrController || motor.ControlMode == ExperimentControlMode.VrPhysicalOffset);
+            var vr = motor != null && motor.ControlMode == ExperimentControlMode.VrController;
             if (vr) { var rig = player.GetComponent<OVRCameraRig>(); if (rig != null) return rig.centerEyeAnchor; }
             return player.Find("DesktopCameraRig");
         }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
@@ -7,20 +6,18 @@ public enum ExperimentControlMode
 {
     Disabled,
     DesktopGamepad,
-    VrController,
-    VrPhysicalOffset
+    VrController
 }
 
 /// <summary>
-/// A single movement motor shared by desktop gamepad, Quest controller and
-/// physical head-offset input. The tracked cameras remain owned by OVRCameraRig.
+/// Movement with a Quest controller or desktop input. OVRCameraRig owns head tracking.
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(CharacterController))]
 public sealed class ExperimentLocomotion : MonoBehaviour
 {
     [Header("Runtime mode")]
-    [SerializeField] private ExperimentControlMode controlMode = ExperimentControlMode.DesktopGamepad;
+    [SerializeField] private ExperimentControlMode controlMode = ExperimentControlMode.VrController;
     [SerializeField] private bool allowDevelopmentModeShortcuts = true;
     [SerializeField] private bool showDesktopHelp = true;
 
@@ -37,9 +34,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
     [SerializeField, Min(0.01f)] private float mouseLookScale = 0.08f;
     [SerializeField, Range(10f, 89f)] private float maximumPitch = 80f;
 
-    [Header("Physical-offset movement")]
-    [SerializeField, Min(0.01f)] private float physicalOffsetDeadZone = 0.12f;
-
     private CharacterController _characterController;
     private OVRCameraRig _cameraRig;
     private OVRManager _ovrManager;
@@ -54,10 +48,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
     private float _desktopPitch;
     private bool _paused;
     private bool _initialized;
-
-    private Vector3 _calibratedHeadLocalPosition;
-    private Quaternion _calibratedHeading;
-    private bool _hasCalibration;
 
     public ExperimentControlMode ControlMode => controlMode;
     public bool IsPaused => _paused;
@@ -87,7 +77,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
 
         _initialized = true;
         SetControlMode(initialMode);
-        RecalibratePhysicalCenter();
     }
 
     private void Update()
@@ -118,9 +107,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
             case ExperimentControlMode.VrController:
                 desiredDirection = ReadVrControllerMovement();
                 break;
-            case ExperimentControlMode.VrPhysicalOffset:
-                desiredDirection = ReadPhysicalOffsetMovement();
-                break;
         }
 
         var desiredVelocity = desiredDirection * movementSpeed;
@@ -143,8 +129,7 @@ public sealed class ExperimentLocomotion : MonoBehaviour
         _verticalVelocity = 0f;
 
         var desktopMode = mode == ExperimentControlMode.DesktopGamepad;
-        var vrMode = mode == ExperimentControlMode.VrController ||
-                     mode == ExperimentControlMode.VrPhysicalOffset;
+        var vrMode = mode == ExperimentControlMode.VrController;
 
         if (_desktopCamera != null)
         {
@@ -172,11 +157,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
             _ovrManager.enabled = true;
         }
 
-        if (mode == ExperimentControlMode.VrPhysicalOffset)
-        {
-            RecalibratePhysicalCenter();
-        }
-
         Debug.Log($"Experiment locomotion mode: {controlMode}", this);
     }
 
@@ -194,28 +174,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
         {
             _desktopCamera.transform.localRotation = Quaternion.identity;
         }
-
-        StartCoroutine(RecalibrateNextFrame());
-    }
-
-    public void RecalibratePhysicalCenter()
-    {
-        if (_cameraRig == null || _cameraRig.centerEyeAnchor == null)
-        {
-            _hasCalibration = false;
-            return;
-        }
-
-        _calibratedHeadLocalPosition = _cameraRig.centerEyeAnchor.localPosition;
-        _calibratedHeading = Quaternion.Euler(0f, transform.eulerAngles.y, 0f);
-        _hasCalibration = true;
-        Debug.Log("Physical movement center calibrated.", this);
-    }
-
-    private IEnumerator RecalibrateNextFrame()
-    {
-        yield return null;
-        RecalibratePhysicalCenter();
     }
 
     private Vector3 ReadDesktopMovement()
@@ -263,25 +221,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
         return Vector3.ClampMagnitude(forward * input.y + right * input.x, 1f);
     }
 
-    private Vector3 ReadPhysicalOffsetMovement()
-    {
-        if (!_hasCalibration || _cameraRig == null || _cameraRig.centerEyeAnchor == null)
-        {
-            return Vector3.zero;
-        }
-
-        var offset = _cameraRig.centerEyeAnchor.localPosition - _calibratedHeadLocalPosition;
-        offset.y = 0f;
-        if (offset.magnitude <= physicalOffsetDeadZone)
-        {
-            return Vector3.zero;
-        }
-
-        // Fixed speed: offset length selects stop/go, while offset direction
-        // selects travel direction relative to the calibrated heading.
-        return (_calibratedHeading * offset.normalized).normalized;
-    }
-
     private void UpdateDesktopView()
     {
         var look = Vector2.zero;
@@ -310,8 +249,7 @@ public sealed class ExperimentLocomotion : MonoBehaviour
     {
         if (_characterController == null) return;
 
-        var vrMode = controlMode == ExperimentControlMode.VrController ||
-                     controlMode == ExperimentControlMode.VrPhysicalOffset;
+        var vrMode = controlMode == ExperimentControlMode.VrController;
         if (vrMode && _cameraRig != null && _cameraRig.centerEyeAnchor != null)
         {
             var localHead = transform.InverseTransformPoint(_cameraRig.centerEyeAnchor.position);
@@ -355,12 +293,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
             ResetToSpawn();
         }
 
-        if ((keyboard != null && keyboard.cKey.wasPressedThisFrame) ||
-            (gamepad != null && gamepad.buttonNorth.wasPressedThisFrame))
-        {
-            RecalibratePhysicalCenter();
-        }
-
         if ((keyboard != null && keyboard.pKey.wasPressedThisFrame) ||
             (gamepad != null && gamepad.startButton.wasPressedThisFrame))
         {
@@ -377,8 +309,6 @@ public sealed class ExperimentLocomotion : MonoBehaviour
             SetControlMode(ExperimentControlMode.DesktopGamepad);
         if (Keyboard.current.f2Key.wasPressedThisFrame)
             SetControlMode(ExperimentControlMode.VrController);
-        if (Keyboard.current.f3Key.wasPressedThisFrame)
-            SetControlMode(ExperimentControlMode.VrPhysicalOffset);
         if (Keyboard.current.f4Key.wasPressedThisFrame)
             SetControlMode(ExperimentControlMode.Disabled);
     }
@@ -399,8 +329,8 @@ public sealed class ExperimentLocomotion : MonoBehaviour
             "Desktop locomotion test\n" +
             "Move: Xbox left stick / WASD\n" +
             "Look: Xbox right stick / hold right mouse\n" +
-            "Reset: A / R    Calibrate: Y / C    Pause: Menu / P\n" +
-            "Modes: F1 Desktop, F2 VR stick, F3 VR offset, F4 Disabled";
+            "Reset: A / R    Pause: Menu / P\n" +
+            "Modes: F1 Desktop, F2 VR stick, F4 Disabled";
         GUI.Box(new Rect(16f, 16f, 470f, 112f), message);
     }
 }

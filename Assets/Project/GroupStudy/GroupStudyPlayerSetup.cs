@@ -20,7 +20,8 @@ public sealed class GroupStudyPlayerSetup : MonoBehaviour
             enabled = false;
             return;
         }
-        locomotion.Initialize(cameraRig, manager, desktopCamera, characterController, ExperimentControlMode.DesktopGamepad);
+        locomotion.Initialize(cameraRig, manager, desktopCamera, characterController, ExperimentControlMode.VrController);
+        SceneBucketManager.PrepareStudyScene(gameObject.scene, GetComponentInChildren<DM2350.Recording.RouteRecorder>(true));
         listeners = cameraRig.GetComponentsInChildren<AudioListener>(true);
         UpdateListeners();
     }

@@ -1,3 +1,4 @@
+using DM2350.Recording;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -6,23 +7,39 @@ public class SceneTriggerZone : MonoBehaviour
     [Tooltip("Tag assigned to your VR Player / XR Origin collider.")]
     [SerializeField] private string playerTag = "Player";
 
-    private bool hasTriggered = false;
+    private bool hasTriggered;
 
-    private void Reset()
+    private void Awake()
     {
-        // Automatically ensure the collider acts as a trigger
-        GetComponent<Collider>().isTrigger = true;
+        // A kinematic body ensures the zone receives events from the study CharacterController.
+        var zone = GetComponent<Collider>();
+        if (zone.attachedRigidbody == null)
+        {
+            var body = gameObject.AddComponent<Rigidbody>();
+            body.isKinematic = true;
+            body.useGravity = false;
+        }
     }
+
+    private void Reset() => GetComponent<Collider>().isTrigger = true;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (hasTriggered) return;
+        var manager = SceneBucketManager.Instance;
+        if (hasTriggered || manager == null || manager.IsLoading) return;
 
-        // Check root or collider tag (VR rigs often nest colliders on the Camera or CharacterController)
-        if (other.CompareTag(playerTag) || other.transform.root.CompareTag(playerTag))
+        var study = other.GetComponentInParent<GroupStudyPlayerSetup>();
+        if (!(other is CharacterController && study != null) &&
+            !other.CompareTag(playerTag) && !other.transform.root.CompareTag(playerTag))
+            return;
+
+        var recorder = study == null ? null : study.GetComponentInChildren<RouteRecorder>(true);
+        if (recorder != null && recorder.IsRecording && !recorder.StopRecording("scene_trigger"))
         {
-            hasTriggered = true;
-            SceneBucketManager.Instance.LoadNextRandomScene();
+            Debug.LogError("The route could not be saved. Scene transition cancelled.", this);
+            return;
         }
+
+        hasTriggered = manager.TryLoadNextRandomScene(recorder);
     }
 }
